@@ -41,7 +41,7 @@ function ListComp(props){
                     <div className="col">
                         <div className="row">
                             <div className="col" style={{"fontSize":"27px"}}>
-                                <h4 className="small font-weight-bold"><span className="float-right">$10016.4456</span></h4>
+                                <h4 className="small font-weight-bold"><span className="float-right">${parseInt(v.price).toFixed(2)}</span></h4>
                             </div>
                         </div>
                         <div className="row">
