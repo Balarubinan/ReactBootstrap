@@ -1,6 +1,6 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.bundle'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
 import TitleComp from './TitleComponent';
 import ListComp from './ListComp';
 function App() {
@@ -9,9 +9,9 @@ function App() {
     style={{backgroundColor:"rgba(0,0,0,0)"}}>
       <div className="row">
           <TitleComp/>
-          <ListComp/>
-          <ListComp/>
-          <ListComp/>
+          <ListComp title="For New Investors"/>
+          <ListComp title="Trending coins"/>
+          <ListComp title="Non-trending coins"/>
       </div>
     </div>
 );
