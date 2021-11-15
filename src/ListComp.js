@@ -20,7 +20,7 @@ function ListComp(props){
                 {listTitle}
             </div>
             {coins&&<h1>hheh</h1>&&coins.map((v,i,arr)=>{return(
-            <div className="card-body">
+            <div className="card-body" key={i}>
                 <div className="row">
                     <div className="col-2">
                         <img src={v.logo_url}
@@ -41,12 +41,12 @@ function ListComp(props){
                     <div className="col">
                         <div className="row">
                             <div className="col" style={{"fontSize":"27px"}}>
-                                <h4 className="small font-weight-bold"><span className="float-right">${parseInt(v.price).toFixed(2)}</span></h4>
+                                <h4 className="small font-weight-bold"><span className="float-right">${parseFloat(v.price).toFixed(2)}</span></h4>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col">
-                                <h4 className="small font-weight-bold"><span className="float-left">12.45%</span></h4>
+                                <h4 className="small font-weight-bold"><span className="float-left">{parseFloat(v['1d'].price_change_pct).toFixed(2)+"%"}</span></h4>
                             </div>
                         </div>
                     </div>
