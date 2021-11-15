@@ -1,14 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
-import { useState } from 'react';
 // import staticFetch from './APIFecth';
 // import fecthCoinData from './APIFecth'
 import data from './sampledata.json'
 function ListComp(props){
     // let coinObjects=staticFetch()
     // console.log(data[0])
-    let coinObjects=data.slice(0,4)
-    const [coins, setCoins] = useState(coinObjects)
+    let coins=data.slice(0,4)
+    // const [coins, setCoins] = useState(coinObjects)
     let listTitle=props.title
     //  use the api to fecth the data here!!
     //  add a serach and subscribe page
@@ -24,7 +23,7 @@ function ListComp(props){
                 <div className="row">
                     <div className="col-2">
                         <img src={v.logo_url}
-                        height="50px" width="50px"/>
+                        height="50px" width="50px" alt="No logo"/>
                     </div>
                     <div className="col">
                         <div className="row">
