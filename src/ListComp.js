@@ -3,6 +3,7 @@ import 'bootstrap/dist/js/bootstrap.bundle'
 // import staticFetch from './APIFecth';
 // import fecthCoinData from './APIFecth'
 import data from './sampledata.json'
+import {BsFillArrowDownCircleFill,BsFillArrowUpCircleFill} from "react-icons/bs"
 function ListComp(props){
     // let coinObjects=staticFetch()
     // console.log(data[0])
@@ -45,7 +46,10 @@ function ListComp(props){
                         </div>
                         <div className="row">
                             <div className="col">
-                                <h4 className="small font-weight-bold"><span className="float-left">{parseFloat(v['1d'].price_change_pct).toFixed(2)+"%"}</span></h4>
+                                {parseFloat(v['1d'].price_change_pct)>0&&
+                                <h4 className="small font-weight-bold" style={{color:"green"}}><BsFillArrowUpCircleFill color="green" size="20"/>  <span className="float-left">{parseFloat(v['1d'].price_change_pct).toFixed(2)+"%"}</span></h4>}
+                                {parseFloat(v['1d'].price_change_pct)<0&&
+                                <h4 className="small font-weight-bold" style={{color:"red"}}><BsFillArrowDownCircleFill color="red" size="20"/>  <span className="float-left">{parseFloat(v['1d'].price_change_pct).toFixed(2)+"%"}</span></h4>}
                             </div>
                         </div>
                     </div>
