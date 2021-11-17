@@ -1,11 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
-// import { useState } from 'react';
+import { useState } from 'react';
 
 
 function TitleComp(){
-    // let [user,setuser]=useState("Default User")
-    let user="Admin"
+    let [user,setuser]=useState("Default User")
     const welcometext="Welcome, To the CryptoTrack"
     return(
         <div className="col-md-6 col-xl-6">
