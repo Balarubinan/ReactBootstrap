@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 // import staticFetch from './APIFecth';
 import fetchCoinData from './APIFecth'
-import data from './sampledata.json'
 import {BsFillArrowDownCircleFill,BsFillArrowUpCircleFill} from "react-icons/bs"
 import { useState } from 'react'
 function ListComp(props){
@@ -11,7 +10,7 @@ function ListComp(props){
         setcoins(res)
         console.log("From callback"+res)
     }
-    setInterval(()=>fetchCoinData(fetchCallback),1000)
+    setInterval(()=>fetchCoinData(fetchCallback),10000)
     let listTitle=props.title
     return(
     <div className="col-md-6 col-xl-6">
@@ -54,8 +53,9 @@ function ListComp(props){
                         </div>
                     </div>
                 </div>
+                <hr style={{color:"rgba(255,255,255,0.5)"}}/>
             </div>)})}
-            <hr style={{color:"rgba(255,255,255,0.5)"}}/>
+            
         </div>
     </div>
     )
