@@ -6,23 +6,22 @@ import ListComp from './ListComp';
 import {} from "@mui/material/SvgIcon"
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   Link
 } from "react-router-dom";
+
 import LoginComp from './LoginComponent';
+import HomeComp from "./HomeComp"
 function App() {
   return (
-    <div className="container" 
-    style={{backgroundColor:"rgba(0,0,0,0)"}}>
-      <div className="row">
-          <TitleComp/>
-          <ListComp title="Ideal for New Investors"/>
-          {/* <LoginComp/> */}
-          <ListComp title="Trending coins"/>
-          <ListComp title="Non-trending coins"/>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        {/* <IndexRedirect to="/"/> */}
+        <Route path="/" element={<LoginComp/>}/>
+        <Route path="/home" element={<HomeComp/>}/>
+      </Routes>
+    </Router>
 );
 }
 
