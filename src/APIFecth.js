@@ -30,8 +30,9 @@ export async function fetchCoinData(callBack){
       // return dataObj      
 }
 
-function fecthCoinIds(){
-
+export function Fetchpass(email){
+  // for debugging will implment later
+  return "adminpass"
 }
 
 // function staticFetch() {
