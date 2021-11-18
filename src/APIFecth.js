@@ -15,7 +15,7 @@ export async function fetchCoinData(callBack){
 
     var config = {
         method: 'get',
-        url: `https://api.nomics.com/v1/currencies/ticker?key=1f817e98d914351cb28cf89769a40b356d99ddc6&ids=${coinList}&interval=1h`,
+        url: `/v1/currencies/ticker?key=1f817e98d914351cb28cf89769a40b356d99ddc6&ids=${coinList}&interval=1h`,
       };
       let dataObj=null
       await axios(config)
