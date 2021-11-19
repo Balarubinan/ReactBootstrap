@@ -1,14 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
-import TitleComp from './TitleComponent';
-import ListComp from './ListComp';
 import {} from "@mui/material/SvgIcon"
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import LoginComp from './LoginComponent';
@@ -17,7 +14,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* <IndexRedirect to="/"/> */}
         <Route path="/" element={<LoginComp/>}/>
         <Route path="/home" element={<HomeComp/>}/>
       </Routes>

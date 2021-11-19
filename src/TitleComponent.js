@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import { useState } from 'react';
 
-
+// simple Component to render basics text and user info
 function TitleComp(){
     let [user,setuser]=useState("Default User")
     const welcometext="Welcome, To the CryptoTrack"

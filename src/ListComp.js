@@ -11,8 +11,7 @@ function ListComp(props){
         setcoins(res)
         console.log("From callback :"+count++)
     }
-    // fetchCoinData(fetchCallback)
-    // setInterval(()=>fetchCoinData(fetchCallback),11000) // api refreshes data only after 10 secs.....so fetching after 11 secs
+    // api refreshes data only after 10 secs , so fetching after 11 secs
     useEffect(() => {
         fetchCoinData(fetchCallback)
         let intervalId=setInterval(()=>fetchCoinData(fetchCallback),11000)

@@ -1,4 +1,3 @@
-
 import TitleComp from "./TitleComponent"
 import ListComp from "./ListComp"
 function HomeComp(){

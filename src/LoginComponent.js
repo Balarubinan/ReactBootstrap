@@ -9,14 +9,11 @@ function LoginComp(){
     const [logged, setlogged] = useState(false)
     function checkLogin(e){
         e.preventDefault()
-        console.log("chekc login called")
-        console.log(username+pass)
         if(pass=="adminpass"&&username=="RecklessRubin@hismail.com"){
-            console.log("Login Success")
             setlogged(true)
         }
         else{
-            console.log("login failed")
+            setusername("");setpass("")
         }
     }
     function onUserChange(event){

@@ -1,6 +1,8 @@
 var axios = require('axios');
 var fs=require('fs')
 
+
+//  Coin names to be monitored
 let coinList=`BTC,ETH,BNB,LTC,QTUM,ADA,XRP,EOS,IO
 TA,XLM,TRX,ETC,VET,LINK,BTT,ZRX,BA
 T,XMR,ZEC,DASH,ENJ,MATIC,ATOM,ALGOI
@@ -9,13 +11,11 @@ C,COMP,SNX,MKR,MANA,YFI,BAL,CRV,
 DOT,PAXG,SUSHI,UNI,AAVE,FIL,GRT,1INC
 H,CAKE,ICP,USDP`
 
-// let coinList="BTC,ETH,BNB,GRT,DOGE,FIL,ICP"
 
 export async function fetchCoinData(callBack){
-
     var config = {
         method: 'get',
-        url: `/v1/currencies/ticker?key=1f817e98d914351cb28cf89769a40b356d99ddc6&ids=${coinList}&interval=1h`,
+        url: `https://api.nomics.com/v1/currencies/ticker?key=1f817e98d914351cb28cf89769a40b356d99ddc6&ids=${coinList}&interval=1h`,
       };
       let dataObj=null
       await axios(config)
@@ -26,7 +26,7 @@ export async function fetchCoinData(callBack){
       .catch(function (error) {
         console.log(error);
       });
-      console.log(dataObj)
+      // console.log(dataObj)
       // return dataObj      
 }
 
@@ -35,14 +35,4 @@ export function Fetchpass(email){
   return "adminpass"
 }
 
-// function staticFetch() {
-//   var text = fs.readFileSync('output.json','utf8')
-//   return(text)
-// }
-
-// staticFetch().then(response=>console.log("d print"+response.data))
-// console.log(staticFetch())
-// fetchCoinData()
 export default fetchCoinData; 
-// console.log(fetchCoinData())
-// console.log("Got")
