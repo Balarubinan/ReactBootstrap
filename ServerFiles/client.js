@@ -20,14 +20,15 @@ let socket=null
 //   console.log(data.body)
 // })
 
-function InitConnection(){
+function InitConnection(callBack){
   // const socket = io("http://localhost:3000")
   socket=io("https://stg.walrusmoney.com")
   socket.on('connect',function(){
     console.log("Socket connected")})
   socket.on('error',()=>console.log("Error while trying to connect"))
   socket.on('tickerArray',function(response){
-    console.log(response)
+    // console.log(response)
+    callBack(response)
   })
 }
 

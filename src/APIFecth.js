@@ -20,12 +20,13 @@ export function InitConnection(callBack){
   socket.on('error',()=>console.log("Error while trying to connect"))
   socket.on('tickerArray',function(response){
     console.log(typeof response)
+    // the api stores the Stringified version of the url array
     callBack(JSON.parse(response))
   })
 }
 
 
-export function fetchIconUrls(callBack){
+export function fetchIconUrls(){
   return axios({
     method:'get',
     url:"https://stg.walrusmoney.com/rwd/layout/1"
@@ -55,18 +56,14 @@ export async function fetchCoinData(callBack){
       // return dataObj      
 }
 
-// export function Fetchpass(email){
-//   // for debugging will implment later
-//   return "adminpass"
-// }
-
 // saves url of all icons
 function LogosToFile(data){
-  let urlArr=[]
+  let urlobj={}
   for(let obj of data){
-    urlArr.push(obj.logo_url)
+    // Nomics api omit INR
+    urlobj[obj.symbol+"INR"]=obj.logo_url
   }
-  console.log(JSON.stringify(urlArr))
+  console.log(JSON.stringify(urlobj))
 }
 
 // checkGetUrls()

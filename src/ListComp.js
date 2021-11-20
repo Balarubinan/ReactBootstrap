@@ -9,7 +9,7 @@ import { useState,useEffect } from 'react'
 var count=0
 function ListComp(props){
     const [coins, setcoins] = useState([])  
-    let [logo_urls, setlogo_urls] = useState([])
+    let [logo_urls, setlogo_urls] = useState({})
     function fetchCallback(res){
         setcoins(res)
         console.log("From callback :"+count++)
@@ -39,7 +39,7 @@ function ListComp(props){
             <div className="card-body" key={i}>
                 <div className="row">
                     <div className="col-2">
-                        <img src={logo_urls[i]}
+                        <img src={logo_urls[v.s]}
                         height="50px" width="50px" alt="No logo"/>
                     </div>
                     <div className="col">
