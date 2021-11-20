@@ -21,11 +21,11 @@ function ListComp(props){
     }, [])
     let listTitle=props.title
     return(
-    <div className="col-md-6 col-xl-6" style={{'overflow-y':'scroll'}}>
-        <div className="card shadow mb-4" style={{opacity: 1,filter: "blur(0px)",height: "380px",backgroundColor: "rgba(255,255,255,0)",color: "rgb(255,255,255)"}}>
-            <div className="col">
+    <div className="col-md-6 col-xl-6">
+        <div className="col" style={{color: "rgb(255,255,255)","fontSize":"20px"}}>
                 {listTitle}
-            </div>
+        </div>
+        <div className="card shadow mb-4" style={{opacity: 1,filter: "blur(0px)",height: "380px",backgroundColor: "rgba(255,255,255,0)",color: "rgb(255,255,255)",'overflow-y':'scroll'}}>
             {coins&&<h1>hheh</h1>&&coins.map((v,i,arr)=>{return(
             <div className="card-body" key={i}>
                 <div className="row">
