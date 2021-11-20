@@ -11,7 +11,7 @@ C,COMP,SNX,MKR,MANA,YFI,BAL,CRV,
 DOT,PAXG,SUSHI,UNI,AAVE,FIL,GRT,1INC
 H,CAKE,ICP,USDP`
 
-let coinArr=coinList.split(',').slice(0,10)
+let coinArr=Array.from(coinList.split(',')).slice(0,10)
 
 function getRandomNum(min, max) {
     return Math.random() * (max - min) + min;
@@ -31,7 +31,7 @@ function getSingleObj(coinName){
 
 function getPayload(){
     let payload={body:[]}
-    for(let coin in coinArr){
+    for(let coin of coinArr){
         payload.body.push(getSingleObj(coin))
     }
     console.log(payload)
