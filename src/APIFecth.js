@@ -1,5 +1,5 @@
 var axios = require('axios');
-var fs=require('fs')
+var fs=require('fs');
 
 
 //  Coin names to be monitored
@@ -10,6 +10,31 @@ NR,DOGE,CHZ,BUSD,XTZ,BCH,SOL,KN
 C,COMP,SNX,MKR,MANA,YFI,BAL,CRV,
 DOT,PAXG,SUSHI,UNI,AAVE,FIL,GRT,1INC
 H,CAKE,ICP,USDP`
+
+const io=require("socket.io-client")
+let socket=null
+export function InitConnection(callBack){
+  socket=io("https://stg.walrusmoney.com")
+  socket.on('connect',function(){
+    console.log("Socket connected")})
+  socket.on('error',()=>console.log("Error while trying to connect"))
+  socket.on('tickerArray',function(response){
+    console.log(typeof response)
+    callBack(JSON.parse(response))
+  })
+}
+
+
+export function fetchIconUrls(callBack){
+  return axios({
+    method:'get',
+    url:"https://stg.walrusmoney.com/rwd/layout/1"
+  })
+  // .then(function(resp){ 
+  //   // response data obj has another data obj
+  //   callBack(resp.data.data)
+  // }).catch(err=>console.log(err))
+}
 
 
 export async function fetchCoinData(callBack){
@@ -30,9 +55,21 @@ export async function fetchCoinData(callBack){
       // return dataObj      
 }
 
-export function Fetchpass(email){
-  // for debugging will implment later
-  return "adminpass"
+// export function Fetchpass(email){
+//   // for debugging will implment later
+//   return "adminpass"
+// }
+
+// saves url of all icons
+function LogosToFile(data){
+  let urlArr=[]
+  for(let obj of data){
+    urlArr.push(obj.logo_url)
+  }
+  console.log(JSON.stringify(urlArr))
 }
+
+// checkGetUrls()
+// fetchCoinData(LogosToFile)
 
 export default fetchCoinData; 

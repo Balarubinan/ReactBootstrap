@@ -1,23 +1,32 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import fetchCoinData from './APIFecth'
+import { InitConnection } from './APIFecth'
+import { fetchIconUrls } from './APIFecth'
 import {BsFillArrowDownCircleFill,BsFillArrowUpCircleFill} from "react-icons/bs"
 import { useState,useEffect } from 'react'
 
 var count=0
 function ListComp(props){
     const [coins, setcoins] = useState([])  
+    let [logo_urls, setlogo_urls] = useState([])
     function fetchCallback(res){
         setcoins(res)
         console.log("From callback :"+count++)
     }
     // api refreshes data only after 10 secs , so fetching after 11 secs
     useEffect(() => {
-        fetchCoinData(fetchCallback)
-        let intervalId=setInterval(()=>fetchCoinData(fetchCallback),11000)
-        return () => {
-            clearInterval(intervalId)
-        }
+        // fetchCoinData(fetchCallback)
+        fetchIconUrls().then(function(resp){
+            setlogo_urls(resp.data.data)
+            console.log("icons ftched")
+            InitConnection(fetchCallback)
+            console.log("after conne")
+        }).catch(err=>console.log("Error while fetching Urls"+err))
+        // let intervalId=setInterval(()=>fetchCoinData(fetchCallback),11000)
+        // return () => {
+        //     clearInterval(intervalId)
+        // }
     }, [])
     let listTitle=props.title
     return(
@@ -30,33 +39,33 @@ function ListComp(props){
             <div className="card-body" key={i}>
                 <div className="row">
                     <div className="col-2">
-                        <img src={v.logo_url}
+                        <img src={logo_urls[i]}
                         height="50px" width="50px" alt="No logo"/>
                     </div>
                     <div className="col">
                         <div className="row">
                             <div className="col">
-                                <h4 className="small font-weight-bold" style={{"fontSize":"26px"}}>{v.name}</h4>
+                                <h4 className="small font-weight-bold" style={{"fontSize":"26px"}}>{v.s}</h4>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col">
-                                <h4 className="small font-weight-bold">{v.id}</h4>
+                                <h4 className="small font-weight-bold">{v.s}</h4>
                             </div>
                         </div>
                     </div>
                     <div className="col">
                         <div className="row">
                             <div className="col" style={{"fontSize":"27px"}}>
-                                <h4 className="small font-weight-bold"><span className="float-right">${parseFloat(v.price).toFixed(2)}</span></h4>
+                                <h4 className="small font-weight-bold"><span className="float-right">${parseFloat(v.c).toFixed(2)}</span></h4>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col">
-                                {parseFloat(v['1h'].price_change)>0&&
-                                <h4 className="small font-weight-bold" style={{color:"green"}}><BsFillArrowUpCircleFill color="green" size="20"/>  <span className="float-left">{parseFloat(v['1h'].price_change).toFixed(2)+"%"}</span></h4>}
-                                {parseFloat(v['1h'].price_change)<0&&
-                                <h4 className="small font-weight-bold" style={{color:"red"}}><BsFillArrowDownCircleFill color="red" size="20"/>  <span className="float-left">{parseFloat(v['1h'].price_change).toFixed(2)+"%"}</span></h4>}
+                                {parseFloat(v.P)>0&&
+                                <h4 className="small font-weight-bold" style={{color:"green"}}><BsFillArrowUpCircleFill color="green" size="20"/>  <span className="float-left">{parseFloat(v.P).toFixed(2)+"%"}</span></h4>}
+                                {parseFloat(v.P)<0&&
+                                <h4 className="small font-weight-bold" style={{color:"red"}}><BsFillArrowDownCircleFill color="red" size="20"/>  <span className="float-left">{parseFloat(v.P).toFixed(2)+"%"}</span></h4>}
                             </div>
                         </div>
                     </div>
