@@ -25,6 +25,11 @@ export function InitConnection(callBack){
   })
 }
 
+// adds a new listners to the given event
+export function addSubscriber(event,callBack){
+  socket.on(event,data=>callBack(data))
+}
+
 
 export function fetchIconUrls(){
   return axios({
@@ -51,9 +56,7 @@ export async function fetchCoinData(callBack){
       })
       .catch(function (error) {
         console.log(error);
-      });
-      // console.log(dataObj)
-      // return dataObj      
+      });  
 }
 
 // saves url of all icons

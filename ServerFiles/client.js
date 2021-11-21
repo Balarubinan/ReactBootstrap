@@ -1,24 +1,29 @@
 const io=require("socket.io-client")
 
-// const socket = io("http://localhost:3000")
-let socket=null
-// socket.on('connect',()=>{
-//   console.log("Connected")
-//   socket.on('subscribe',(data)=>{
-//     console.log(data)
-//   })
-//   socket.emit('subscribe',{body:{coinName:"BTC"}})
-//   console.log("Subbed")
-//   socket.emit('sub30',{})
-// })
-// socket.io.on("error", (error) => {
-//   console.log("error"+error)
-// });
-// socket.on("MyUpdate",(data)=>console.log("Hello "+JSON.stringify(data)))
+const socket = io("http://localhost:3000")
+// let socket=null
+socket.on('connect',()=>{
+  console.log("Connected")
+  // same events don't overwite , but add to available listners 
+  // both the I was called and I was called Too below will work!
+  socket.on('subscribe',(data)=>{   
+    console.log("I was called")
+  })
+  socket.on('subscribe',(data)=>{
+    console.log("I was called TOo")
+  })
+  socket.emit('subscribe',{body:{coinName:"BTC"}})
+  console.log("Subbed")
+  socket.emit('sub30',{})
+})
+socket.io.on("error", (error) => {
+  console.log("error"+error)
+});
+socket.on("MyUpdate",(data)=>console.log("Hello "+JSON.stringify(data)))
 
-// socket.on('tickerArry',data=>{
-//   console.log(data.body)
-// })
+socket.on('tickerArry',data=>{
+  console.log(data.body)
+})
 
 function InitConnection(callBack){
   // const socket = io("http://localhost:3000")
@@ -31,6 +36,13 @@ function InitConnection(callBack){
     callBack(response)
   })
 }
+
+function addSubscriber(event,callBack){
+  socket.on(event,()=>callBack(data))
+}
+// function addSubscriber(){
+
+// }
 
 // returns an array of JSON's
 async function fetchCoinInfo(coinArr){
@@ -49,7 +61,7 @@ async function fetchCoinInfo(coinArr){
   // console.log(resArr);console.log("*******")
 }
 
-InitConnection()
+// InitConnection()
 // fetchCoinInfo(["BTC","ETH"]).then(d=>console.log(d),()=>{})
 
 // Emit 1 : Name:subscribe data : coinName

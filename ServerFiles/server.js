@@ -1,7 +1,8 @@
 //  A Psuedo-server to simulate Socket endpoint for development
-const { Server } = require("socket.io");
+// const { Server } = require("socket.io"); => V4
 
-const io = new Server();
+// const io = new Server();
+const io=require("socket.io")(3000)//=>V2
 
 let coinList=`BTC,ETH,BNB,LTC,QTUM,ADA,XRP,EOS,IO
 TA,XLM,TRX,ETC,VET,LINK,BTT,ZRX,BA
@@ -62,4 +63,5 @@ io.on("connection", (socket) => {
 
 io.on('error',(error)=>console.log("Errored out"))
 
-io.listen(3000);
+// io.listen(3000);
+
