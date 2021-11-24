@@ -12,7 +12,7 @@ class Navbar extends React.Component{
     render(){
         return(
             <div className="col">
-                <div className="navbar navbar-light topbar static-topbar">
+                <div className="navbar navbar-expand-md navbar-dark ml-auto">
                     <Link to="/home" className="nav-link navItem">Home</Link>
                     <Link to="/" className="nav-link navItem">Login</Link>
                     <Link to="/allcryptos" className="nav-link navItem">Cryto Screen</Link>

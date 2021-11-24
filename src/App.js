@@ -11,13 +11,14 @@ import {
 import LoginComp from './LoginComponent';
 import HomeComp from "./HomeComp"
 import Navbar from "./Navbar"
+import SearchCryptoComp from './SearchCryptoComp';
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LoginComp/>}/>
         <Route path="/home" element={<HomeComp/>}/>
-        <Route path="/allcryptos" element={<Navbar/>}/>
+        <Route path="/allcryptos" element={<SearchCryptoComp/>}/>
       </Routes>
     </Router>
 );
